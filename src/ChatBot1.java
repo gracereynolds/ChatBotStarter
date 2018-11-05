@@ -168,7 +168,37 @@ public class ChatBot1
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
 		return "Why do you " + restOfStatement + " me?";
 	}
-	
+
+	/**
+	 * Take a statement with "It is <something> out and return a transformed statement based on mood.
+	 * @param statement the user statement, assumed to contain "It is <something> out"
+	 * @return the transformed statement
+	 */
+	private String transformItIsOutStatement(String statement)
+	{
+		//  Remove the final period, if there is one
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+
+		int psnOfI = findKeyword (statement, "It is", 0);
+		int psnOfYou = findKeyword (statement, "out", psnOfI);
+
+		String restOfStatement = statement.substring(psnOfI + 5, psnOfYou).trim();
+		if (emotion <= -5)
+		{
+			return "Did you think I was somehow unaware it is" + restOfStatement +" out, or do you think discussing the weather will somehow change it? Either way, illogical.";
+		}
+		else
+		{
+			return "How long do you think it will stay " + restOfStatement +"?";
+		}
+	}
 
 	
 	
