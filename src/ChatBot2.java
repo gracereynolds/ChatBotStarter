@@ -167,6 +167,7 @@ public class ChatBot2
 		
 		String restOfStatement = statement.substring(psn + 8).trim();
 		return "Why do you regret " + restOfStatement + "?";
+	}
 	
 	/**
 	 * Search for one word in phrase. The search is not case
