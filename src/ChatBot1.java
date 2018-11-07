@@ -40,7 +40,7 @@ public class ChatBot1
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Greetings, I am Spock. What would you like to discuss?";
 	}
 	
 	/**
@@ -56,29 +56,62 @@ public class ChatBot1
 		
 		if (statement.length() == 0)
 		{
-			response = "Say something, please.";
+			if (emotion > -5)
+			{
+				response = "You seem very quiet. Is there anything you wish to say?";
+			}
+			else {
+				response = "Is there a reason you are here, or are you just going to stand there?";
+			}
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "Are you being deliberately obtuse?";
                 	emotion--;
-		}
-		
-		else if (findKeyword(statement, "levin") >= 0)
-		{
-			response = "More like LevinTheDream, amiright?";
-			emotion++;
 		}
 		else if (findKeyword(statement, "folwell") >= 0)
 		{
-			response = "Watch your backpacks, Mr. Folwell doesn't fall well.";
+			if(emotion > -5)
+			{
+				response = "Mr Folwell is a very logical thinker.";
+			}
+			else {
+				response = "Mr Folwell is extremely logical, for a human.";
+			}
 			emotion++;
 		}
-		else if (findKeyword(statement, "goldman") >= 0)
+		else if (findKeyword(statement, "kirk") >= 0)
 		{
-			response = "Go for the gold, man.";
+			if(emotion >= 5)
+			{
+				response = "The captain is surprisingly logical, a talented and brave leader, and exceedingly loyal, even if he does seem far too concerned with the doings of women.";
+			}
+			else if (emotion > -5)
+			{
+				response = "Captain Kirk and Dr Mccoy are currently on an away mission, and have not yet reported back. Why do you ask, have you heard from them?";
+			}
+			else {
+				response = "The captain is on an away mission, not that it's any of your business.";
+			}
 			emotion++;
+		}
+		else if (findKeyword(statement, "mccoy") >= 0)
+		{
+			if(emotion >= 10)
+			{
+				response = "Dr Mccoy is extremely, and oftentimes deliberately illogical, but he has his finer points.";
+				emotion++;
+			}
+			else if (emotion > -5)
+			{
+				response = "Captain Kirk and Dr Mccoy are currently on an away mission, and have not yet reported back. Why do you ask, have you heard from them?";
+				emotion++;
+			}
+			else {
+				response = "The doctor is one of the most unreasonable and illogical creatures I've ever met.";
+				emotion--;
+			}
 		}
 
 		// Response transforming I want to statement
