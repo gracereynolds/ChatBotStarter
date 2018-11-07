@@ -41,7 +41,7 @@ public class ChatBot2
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hey, how you doing? Sorry I'm late.";
 	}
 	
 	/**
@@ -57,7 +57,7 @@ public class ChatBot2
 		
 		if (statement.length() == 0)
 		{
-			response = "Say something, please.";
+			response = "Cat got your tongue?";
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
@@ -66,9 +66,9 @@ public class ChatBot2
                 	emotion--;
 		}
 		
-		else if (findKeyword(statement, "levin") >= 0)
+		else if (findKeyword(statement, "speed") >= 0)
 		{
-			response = "More like LevinTheDream amiright?";
+			response = "More like I'll be back in a flash.";
 			emotion++;
 		}
 
