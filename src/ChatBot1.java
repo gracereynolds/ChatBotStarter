@@ -53,7 +53,6 @@ public class ChatBot1
 	public String getResponse(String statement)
 	{
 		String response = "";
-		
 		if (statement.length() == 0)
 		{
 			if (emotion > -5)
@@ -64,7 +63,6 @@ public class ChatBot1
 				response = "Is there a reason you are here, or are you just going to stand there?";
 			}
 		}
-
 		else if (findKeyword(statement, "no") >= 0)
 		{
 			response = "Are you being deliberately obtuse?";
@@ -113,6 +111,11 @@ public class ChatBot1
 				emotion--;
 			}
 		}
+		else if (findKeyword(statement, "green-blooded devil") >= 0)
+		{
+			response = "I find I prefer being a 'green-blooded devil' than a human like you.";
+			emotion-=5;
+		}
 
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -122,10 +125,22 @@ public class ChatBot1
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
+		}
+		else if (findKeyword(statement, "I") >= 0 && findKeyword(statement, "you") >= 0)
+		{
+			response = transformIYouStatement(statement);
+		}
+		else if (findKeyword(statement, "It is") >= 0 && findKeyword(statement, "out") >= 0)
+		{
+			response = transformItIsOutStatement(statement);
+		}
 		else
 		{
 			response = getRandomResponse();
+		}
+		if (emotion <= 20)
+		{
+			response = "*Everyone has a limit before they snap. You just found the limit of a super strong alien*";
 		}
 		
 		return response;
@@ -173,7 +188,7 @@ public class ChatBot1
 		}
 		int psn = findKeyword (statement, "I want", 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
-		return "Would you really be happy if you had " + restOfStatement + "?";
+		return "Would it really please you to have " + restOfStatement + "?";
 	}
 	
 	
@@ -321,26 +336,26 @@ public class ChatBot1
 	private String getRandomResponse ()
 	{
 		Random r = new Random ();
-		if (emotion == 0)
-		{	
-			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
-		}
-		if (emotion < 0)
+		if (emotion <= -5)
 		{	
 			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
+		}
+		if (emotion > 10)
+		{	
+			return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 		}	
-		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
+		return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
 	}
 	
 	private String [] randomNeutralResponses = {"Interesting, tell me more",
 			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
+			"Is that so?",
+			"Fascinating",
+			"Indeed.",
+			"Would you like a tour of the Enterprise?",
+			"I did not understand. Could you repeat?"
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomAngryResponses = {"I fail to see your logic.", "Do you intend to follow me all day? I'm sure you have other tasks.", "If I was an emotional human like you, I would be extremely irritated."};
+	private String [] randomHappyResponses = {"Do you plan to stay aboard tomorrow?", "I am sure the captain will be sorry he missed you.", "You possess a quick and logical mind."};
 	
 }
