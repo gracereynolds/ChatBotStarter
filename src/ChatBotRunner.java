@@ -20,6 +20,8 @@ public class ChatBotRunner
 		
 
 		Scanner in = new Scanner (System.in);
+		System.out.println("Welcome to the Museum of Science Fiction T.V. shows!");
+		System.out.println("Which character would you like to chat with?");
 		System.out.println("To choose who to chat with, type 'Fives', 'Spock', or 'Barry'");
 		String statement = in.nextLine();
 
