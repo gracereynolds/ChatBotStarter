@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
+//made by Grace Reynolds
 
 /**
  * A program to carry on conversations with a human user.
@@ -138,7 +139,7 @@ public class ChatBot1
 		{
 			response = getRandomResponse();
 		}
-		if (emotion <= 20)
+		if (emotion <= -20)
 		{
 			response = "*Everyone has a limit before they snap. You just found the limit of a super strong alien*";
 		}

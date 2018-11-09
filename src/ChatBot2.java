@@ -1,6 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
-
+//made by Karen Wu
 /**
  * A program to carry on conversations with a human user.
  * This version:

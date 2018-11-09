@@ -1,4 +1,5 @@
 import java.util.Scanner;
+//made by Grace Reynolds, Vincent Tran, Karen Wu
 
 /**
  * A simple class to run our chatbot teams.
@@ -19,18 +20,24 @@ public class ChatBotRunner
 		
 
 		Scanner in = new Scanner (System.in);
-		System.out.println("Welcome to the chatbot, nice to meet you.");
+		System.out.println("To choose who to chat with, type 'Fives', 'Spock', or 'Barry'");
 		String statement = in.nextLine();
 
 
 		while (!statement.equals("Bye"))
 		{
-			//Use Logic to control which chatbot is handling the conversation\
-			//This example has only chatbot1
-
-
-
-			chatbot1.chatLoop(statement);
+			if (statement.equals("Spock"))
+			{
+				chatbot1.chatLoop(statement);
+			}
+			else if (statement.equals("Fives"))
+			{
+				chatbot3.chatLoop(statement);
+			}
+			else if (statement.equals("Barry"))
+			{
+				chatbot2.chatLoop(statement);
+			}
 
 
 			statement = in.nextLine();
