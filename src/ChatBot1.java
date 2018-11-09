@@ -88,7 +88,7 @@ public class ChatBot1
 			}
 			else if (emotion > -5)
 			{
-				response = "Captain Kirk and Dr Mccoy are currently on an away mission, and have not yet reported back. Why do you ask, have you heard from them?";
+				response = "Captain Kirk and Dr Mccoy are currently on an away mission, and have not yet reported back.";
 			}
 			else {
 				response = "The captain is on an away mission, not that it's any of your business.";
@@ -104,7 +104,7 @@ public class ChatBot1
 			}
 			else if (emotion > -5)
 			{
-				response = "Captain Kirk and Dr Mccoy are currently on an away mission, and have not yet reported back. Why do you ask, have you heard from them?";
+				response = "Captain Kirk and Dr Mccoy are currently on an away mission, and have not yet reported back.?";
 				emotion++;
 			}
 			else {
