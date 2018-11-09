@@ -114,8 +114,20 @@ public class ChatBot1
 		}
 		else if (findKeyword(statement, "green-blooded devil") >= 0)
 		{
-			response = "I find I would prefer to be a 'green-blooded devil' than a human like you.";
-			emotion-=5;
+			if (emotion <= -10)
+			{
+				response = "Dr Mccoy, why did you not inform anyone you had returned from the away mission?";
+				emotion -= -3;
+			}
+			else {
+				response = "I find I would prefer to be a 'green-blooded devil' than a human like you.";
+				emotion -= 3;
+			}
+		}
+		else if (findKeyword(statement,"half-breed") >= 0)
+		{
+			response = "These remarks on my parentage are wholly unnecessary.";
+			emotion -= 5;
 		}
 
 		// Response transforming I want to statement
