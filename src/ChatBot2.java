@@ -41,7 +41,7 @@ public class ChatBot2
 	 */	
 	public String getGreeting()
 	{
-		return "Hey, how you doing? Sorry I'm late.";
+		return "I'm Barry Allen, the fastest man alive. How are you doing? Sorry I'm late.";
 	}
 	
 	/**
@@ -62,7 +62,7 @@ public class ChatBot2
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "We can do it together!";
                 	emotion--;
 		}
 		
