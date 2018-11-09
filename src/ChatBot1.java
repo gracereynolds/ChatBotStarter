@@ -114,7 +114,7 @@ public class ChatBot1
 		}
 		else if (findKeyword(statement, "green-blooded devil") >= 0)
 		{
-			response = "I find I prefer being a 'green-blooded devil' than a human like you.";
+			response = "I find I would prefer to be a 'green-blooded devil' than a human like you.";
 			emotion-=5;
 		}
 
