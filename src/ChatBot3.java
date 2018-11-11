@@ -56,6 +56,8 @@ public class ChatBot3
 	{
 		String response = "";
 
+
+		// Fives responses
 		if (statement.length() == 0)
 		{
 			response = "Are you a droid? Say something!";
@@ -63,13 +65,57 @@ public class ChatBot3
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "What do you mean no?!";
 			emotion--;
 		}
 
-		else if (findKeyword(statement, "levin") >= 0)
+		else if (findKeyword(statement, "orders") >= 0)
 		{
-			response = "More like LevinTheDream amiright?";
+			if (emotion < 5) {
+				response = "I'm sorry, I cannot just follow orders when I know they are wrong!";
+			}
+			if (emotion > 0)
+			{
+				response = "I am a soldier, if an order is given by a superior then I should follow it";
+			}
+		}
+
+        else if (findKeyword(statement, "honor") >= 0)
+        {
+            if (emotion < 5) {
+                response = "Where is the honor in blindly following orders?";
+            }
+            if (emotion > 0)
+            {
+                response = "I believe in honor but not at needless cost of my brothers";
+            }
+        }
+
+		else if (findKeyword(statement, "Fives") >= 0)
+		{
+			if (emotion < 5) {
+				response = "You'll address me as sir.";
+			}
+			if (emotion >= 5) {
+				response = "In case you wanted to know my official designation is Arc - 5555";
+			}
+			emotion++;
+		}
+
+		else if (findKeyword(statement, "Weapon") >= 0)
+		{
+			response = "My go to weapon are the twin DC - 17 and from time to time the DC - 15A";
+			emotion++;
+		}
+
+        //Guessing game
+		else if (findKeyword(statement, "game") >= 0)
+		{
+			response = "If you want to play a game, guess a number from 1-10(in words)";
+		}
+		else if (findKeyword(statement, "ten") >= 0)
+		{
+			response = "You got it! It is ten.";
 			emotion++;
 		}
 
@@ -194,7 +240,7 @@ public class ChatBot3
 			statement = statement.substring(0,statement.length() -1);
 		}
 		int psn = findKeyword (statement, "Name", 0);
-		return "My trooper designation is 27 - 5555" + ".";
+		return "My clone trooper designation is 27 - 5555" + ".";
 	}
 
 
@@ -285,15 +331,16 @@ public class ChatBot3
 	private String getRandomResponse ()
 	{
 		Random r = new Random ();
-		if (emotion == 0)
+		if (emotion > 5)
 		{
-			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
+			return randomHappyResponses[r.nextInt(randomHappyResponses.length)];
 		}
-		if (emotion < 0)
+		if (emotion < -5)
 		{
 			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
 		}
-		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
+		    return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
+
 	}
 
 	private String [] randomNeutralResponses = {"Beats me..",
@@ -302,10 +349,12 @@ public class ChatBot3
 			"I might need to check on up that",
 			"For the Republic",
 			"I'm a clone, a soldier!",
+			"The highest levels are involved",
+			"I'm not crazy!"
 
 
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomAngryResponses = {"I'm not just another number, none of us are!", "My blood is boiling for a fight", "This can't be good..","The nightmares.. The missions.. It's finally over.."};
+	private String [] randomHappyResponses = {"I was apart of one the best squads, the Domino squad.", "I fight for the 501st legion", "There is another option"};
 
 }
